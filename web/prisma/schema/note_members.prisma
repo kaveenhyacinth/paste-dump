@@ -1,0 +1,12 @@
+model NoteMembers {
+  id        String   @id @default(uuid())
+  note      Note     @relation(fields: [noteId], references: [id])
+  noteId    String   @map("note_id")
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @map("user_id")
+  hasSeen   Boolean  @default(false) @map("has_seen")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("t_note_members")
+}
